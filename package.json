@@ -7,6 +7,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.4.0",
     "classnames": "2.2.6",
     "date-fns": "2.10.0",
     "next": "latest",

@@ -1,44 +1,27 @@
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
+import Header from '../components/header'
+import Solutions from '../components/solutions'
 
-export default function Index({ preview, allPosts }) {
-  const heroPost = allPosts[0].node
-  const morePosts = allPosts.slice(1)
+export default function Index({ preview }) {
   return (
     <>
       <Layout preview={preview}>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+      </Head>
         <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverimage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost._meta.uid}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        <Header />
+rgrgegergerg
+<Solutions />
+
         </Container>
       </Layout>
     </>
   )
 }
 
-export async function getStaticProps({ preview = false, previewData }) {
-  const allPosts = await getAllPostsForHome(previewData)
-  return {
-    props: { preview, allPosts },
-    revalidate: 60, // In seconds
-  }
-}
